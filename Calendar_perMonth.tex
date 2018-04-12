@@ -1,0 +1,90 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0mm]{geometry}
+
+% _________________________________
+\usepackage{multido}
+% _________________________________
+% CREATING PLOTS FROM DATA
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.11}
+\usepackage{ifthen}
+% _________________________________
+\usepackage{pgffor}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\usepackage{tikzscale}
+\usepackage{filecontents}
+% _________________________________
+\newlength{\PaperHeight}
+\newlength{\PaperWidth}
+\setlength{\PaperWidth}{140mm}
+\setlength{\PaperHeight}{216mm}
+\paperwidth=\PaperWidth
+\paperheight=\PaperHeight
+% _________________________________
+% Le nom a afficher dans l'entete
+\usepackage[cal=dutchcal]{mathalfa}
+\def\Nom#1#2{$\mathcal{#1} #2$} % Fonction construisant les noms avec lettres gothiques
+% _________________________________
+\newcommand{\Haut}{\Nom{M}{adeleine}}
+\newcommand{\Bas}{\Nom{L}{emyre}}
+% _________________________________
+
+\begin{filecontents*}{\jobname-fig2.tikz}
+	\begin{tikzpicture} 
+		\begin{axis}[hide axis, every node/.style={scale=0.2}, width = 0.41\linewidth, height = 24mm]
+			%\addplot[semithick] file {"../../../Artwork/DampedSin3.txt"};
+		 \end{axis}
+	\end{tikzpicture}
+\end{filecontents*}
+
+\newcommand{\logo}{
+	\vbox{
+		%\includegraphics[scale=0.083]{../../../Artwork/Images/RacineCarr}
+	}
+}
+
+
+% _______________________________________________________________________________
+% _______________________________________________________________________________
+
+
+\newcommand{\espacementPoints}{55} % Espace HORIZONTAL entre les points en unitlengths
+\newcommand{\npPtHori}{36} % Nombre de Points HORIZONTAL
+\begin{document}
+
+\begin{figure}[htbp]
+  \centering
+  \setlength{\unitlength}{\paperwidth} 
+    \begin{picture}(1,0.5)%in case your image is twice as wide as it is high
+                          %(otherwise change the 0.5 to your file's height/width).
+      \put(-0.075,0){\textcolor{gray}{\underline{\hphantom{Julia Levesque Cahier Personnel Avec un peu de marge}}}}
+       \put(0.05,-0.05){\textcolor{gray}{\underline{\hphantom{Julia Levesque Cahier Personnel }}}}
+    \end{picture}
+\end{figure}
+
+
+\newpage
+%\includegraphics[scale=0.043]{../../../Artwork/Images/BowPie}
+\begin{figure}[htbp]
+			{
+			
+			%\vspace{157mm}
+			\vspace{185mm}
+			\centering{
+			\vbox{ \hspace{-76mm}\Haut  }
+			\vspace{-11pt}
+			%\vbox{\hspace{-76mm}\vphantom{\includegraphics{\jobname-fig1}} \raisebox{0.5mm}{\Bas}  \vphantom{\includegraphics{\jobname-fig2}}}
+			}}
+			\vspace{-5pt}
+			\vbox to 0pt{
+			\leavevmode
+					\multido{\iC=0+\espacementPoints}{\npPtHori}{
+						\put(\iC,0){\textcolor{lightgray}{---}}
+					}
+			}	
+			\vspace{-9pt}
+		\end{figure}
+
+\end{document}
